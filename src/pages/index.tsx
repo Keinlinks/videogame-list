@@ -1,7 +1,7 @@
-import { VideogamesListPage } from "@/features/videogames/view/pages/videogamesList";
+import VideogameLayout from "@/features/videogames/view/pages/videogameLayout";
 
 
 
 export default function Home() {
-  return <div><VideogamesListPage /></div>;
+  return <div><VideogameLayout /></div>;
 }

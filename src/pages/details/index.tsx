@@ -1,6 +1,6 @@
-import { VideogameDetailsPage } from "@/features/videogames/view/pages/videogameDetails";
+import { VideogameDetails } from "@/features/videogames/view/pages/videogameDetails";
 
 
 export default function Details() {
-  return <VideogameDetailsPage />;
+  return <VideogameDetails />;
 }

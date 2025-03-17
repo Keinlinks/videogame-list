@@ -11,6 +11,7 @@ export class VideogamesRepositoryImpl implements VideogamesRepositoryI {
 
     async getVideogamesList(filter: VideogamesFilter): Promise<PaginatedResponse> {
         let model = await this.videogameDatasource.getVideogamesList(filter);
+        console.log(model.results[0].platforms);
         let entity: PaginatedResponse = {
             ...model,
             results: model.results.map((videogameExt)=>{

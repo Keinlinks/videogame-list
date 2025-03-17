@@ -1,12 +1,16 @@
-import { RawgApiVideogameDatasource, VideogameDatasourceMock } from "../../data/datasources/videogameDatasource";
+import { RawgApiVideogameDatasource, VideogameDatasource, VideogameDatasourceMock } from "../../data/datasources/videogameDatasource";
 import { VideogamesRepositoryImpl } from "../../data/repository/videogameRepositoryImpl";
 
-//Estan son las factories que se utilizan para obtener instancias de los repositorios
+//los tipos de fuentes de datos que se pueden utilizar, para implementar uno nuevo se debe agregar aqui y en repositoryMap
+type VideogameRepositoryType = 'rawgApi' | 'mock';
 
-export function RawgApiVideogamesRepositoryFactory(){
-    return new VideogamesRepositoryImpl(new RawgApiVideogameDatasource());
-}
+const repositoryMap: Record<VideogameRepositoryType, VideogameDatasource> = {
+    rawgApi: new RawgApiVideogameDatasource(),
+    mock: new VideogameDatasourceMock(),
+};
 
-export function VideogameRepositoryFactoryMock(){
-    return new VideogamesRepositoryImpl(new VideogameDatasourceMock());
+export function ApiVideogamesRepositoryFactory(type: VideogameRepositoryType) {
+    let apiVideogameDatasource = repositoryMap[type] || repositoryMap['mock'];
+
+    return new VideogamesRepositoryImpl(apiVideogameDatasource);
 }
