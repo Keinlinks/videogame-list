@@ -7,13 +7,15 @@ import { VideogameContext, filtersInitialState } from "../state/stateManager";
 
 export default function VideogameLayout() {
     const [videogamesPaginated, setVideogamesPaginated] = useState<PaginatedResponse | null>(null);
-
+    const [listLoading, setListLoading] = useState<boolean>(false);
     let filters = filtersInitialState;
 
     const applyFilters = async () => {
         setVideogamesPaginated(null);
+        setListLoading(true);
         let response = await getVideogamesListUseCase(filters);
         setVideogamesPaginated(response);
+        setListLoading(false);
     }
     const changePage = async (page:number)=>{
         if (!videogamesPaginated) return;
@@ -34,13 +36,22 @@ export default function VideogameLayout() {
         filters.sort = sort;
         applyFilters();
     }
-
     useEffect(() => {
         applyFilters();
     }, []);
 
     return <>
-    <VideogameContext.Provider value={{videogamesPaginated,setVideogamesPaginated,applyFilters,filters,changePage,changeOrdering,changeSort,searchQuery}}>
+    <VideogameContext.Provider value={{
+        videogamesPaginated,
+        setVideogamesPaginated,
+        applyFilters,
+        filters,
+        changePage,
+        changeOrdering,
+        changeSort,
+        searchQuery,
+        listLoading
+        }}>
         <div className="flex border-t">
             <aside className="w-72 border-r sticky top-0 h-[calc(100vh-120px)]">
                 <VideogameFilters />
