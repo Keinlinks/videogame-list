@@ -1,4 +1,4 @@
-export interface GenreI {
+export interface GenreModel {
     id: number,
     name: string,
     slug: string,

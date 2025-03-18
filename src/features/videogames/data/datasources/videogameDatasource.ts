@@ -4,6 +4,7 @@ import { PaginatedResponseModel } from "../models/paginatedResponseModel";
 import { VideogameDetailsModel, VideogameSummaryModel } from "../models/videogameModel";
 import { videogameListMock, videogameMock } from "./mocks";
 import { pushQueriesSearchUrl } from "../../utils/utils";
+import { GenreModel } from "../models/genreModel";
 
 //aqui se pueden agregar clases que implementen la interfaz VideogameDatasource para obtener los datos de diferentes fuentes de datos
 

@@ -1,7 +1,7 @@
 import { getDateFromString } from "@/core/utils/utils";
 import { VideogameDetailsI, VideogameSummaryI } from "../../domain/entities/videogame";
 import { VideogamesFilter } from "../../domain/entities/videogamesFilter";
-import { VideogamesRepositoryI } from "../../domain/repository/videogamesRepositoryI";
+import { VideogamesRepositoryI } from "../../domain/repositories/videogamesRepositoryI";
 import { VideogameDatasource } from "../datasources/videogameDatasource";
 import { PaginatedResponse } from "../../domain/entities/paginatedResponse";
 
