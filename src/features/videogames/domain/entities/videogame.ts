@@ -3,7 +3,10 @@ export interface VideogameSummaryI{
     name: string;
     metacritic: number;
     year: number | null;
-    plataform: string[];
+    platforms: {
+        id: number;
+        name: string;
+    }[];
     released: Date | null;
     background_image: string;
 }

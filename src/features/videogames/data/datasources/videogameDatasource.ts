@@ -3,6 +3,7 @@ import { VideogamesFilter } from "../../domain/entities/videogamesFilter";
 import { PaginatedResponseModel } from "../models/paginatedResponseModel";
 import { VideogameDetailsModel } from "../models/videogameModel";
 import { videogameListMock, videogameMock } from "./mocks";
+import { pushQueriesSearchUrl } from "../../utils/utils";
 
 //aqui se pueden agregar clases que implementen la interfaz VideogameDatasource para obtener los datos de diferentes fuentes de datos
 
@@ -16,7 +17,7 @@ export class RawgApiVideogameDatasource implements VideogameDatasource {
     async getVideogamesList(filter: VideogamesFilter): Promise<PaginatedResponseModel> {
         let api_key = API_KEY;
         let api_url = API_URL;
-        let url = `${api_url}games?key=${api_key}&page=${filter.page}&page_size=${filter.page_size}&search=${filter.search}`;
+        let url = `${api_url}games?key=${api_key}&${pushQueriesSearchUrl(filter)}`;
         let response = await fetch(url);
         let json = await response.json();
         return json as PaginatedResponseModel;
@@ -24,7 +25,7 @@ export class RawgApiVideogameDatasource implements VideogameDatasource {
     async getVideogameById(id: number): Promise<VideogameDetailsModel> {
         let api_key = API_KEY;
         let api_url = API_URL;
-        let url = `${api_url}games/${id}?api_key=${api_key}`;
+        let url = `${api_url}games/${id}?key=${api_key}`;
         let response = await fetch(url);
         let json = await response.json();
         return json as VideogameDetailsModel;

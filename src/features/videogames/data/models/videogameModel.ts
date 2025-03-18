@@ -1,4 +1,4 @@
-import { PlataformModel } from "./plataformModel";
+import { PlatformModel } from "./platformModel";
 
 export interface VideogameSummaryModel {
     id: number;
@@ -23,7 +23,7 @@ export interface VideogameSummaryModel {
         slug: string;
         name: string;
     };
-    platforms: PlataformModel[];
+    platforms: PlatformModel[];
 }
 
 export interface VideogameDetailsModel extends VideogameSummaryModel {

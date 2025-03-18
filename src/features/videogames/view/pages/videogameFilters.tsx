@@ -1,15 +1,29 @@
 import VgInputNumber from "@/shared/view/components/vgInputNumber";
 import VgDropdown from "@/shared/view/components/vgDopdown";
 import { useContext } from "react";
-import { VideogameContext } from "./videogameLayout";
+import { VideogameContext } from "../state/stateManager";
 
 
 export default function VideogameFilters() {
 
   const context = useContext(VideogameContext);
 
-  const onChange = (value: any)=>{
-    //context?.filters
+  const onChange = (key:string,value: string)=>{
+    if (!context) return;
+    switch(key){
+      case "genre":
+        context.filters.genres = [value];
+        break;
+      case "platforms":
+        context.filters.platforms = [value];
+        break;
+      case "developers":
+        context.filters.developers = [value];
+        break;
+      case "publishers":
+        context.filters.publishers = [value];
+        break;
+    }
   }
 
   let GenreOptions = ["All", "Action", "Adventure", "RPG", "Racing", "Shooter", "Simulation", "Sports", "Strategy"];
@@ -18,32 +32,27 @@ export default function VideogameFilters() {
   let publisherOptions = ["All", "NINTENDO", "SEGA", "SQUARE ENIX", "UBISOFT", "OTHER"];
 
   function submitFilter() {
-    context?.requestVideogamesList({
-      page: 1,
-      page_size: 10,
-      search: "",
-      
-    });
+    context?.applyFilters();
   }
 
   return <div>
-    <h3 className="text-center font-bold text-xl">Filters</h3>
+    <h3 className="text-center font-bold text-xl mt-2">Filters</h3>
     <div className="px-4 flex flex-col gap-5">
         <div className="flex flex-col gap-2">
             <label>Genre</label>
-            <VgDropdown options={GenreOptions}/>
+            <VgDropdown options={GenreOptions} keyString="genre" onchange={onChange}/>
         </div>
         <div className="flex flex-col gap-2">
             <label>Plataform</label>
-            <VgDropdown options={plataformsOptions}/>
+            <VgDropdown options={plataformsOptions} keyString="platforms" onchange={onChange}/>
         </div>
         <div className="flex flex-col gap-2">
             <label>Developer</label>
-            <VgDropdown options={developerOptions}/>
+            <VgDropdown options={developerOptions} keyString="developers" onchange={onChange}/>
         </div>
         <div className="flex flex-col gap-2">
             <label>Publisher</label>
-            <VgDropdown options={publisherOptions}/>
+            <VgDropdown options={publisherOptions} keyString="publishers" onchange={onChange}/>
         </div>
         <div className="flex flex-col gap-2">
             <label>Released year</label>
@@ -61,7 +70,7 @@ export default function VideogameFilters() {
             <VgInputNumber width={70} placeholder="Max."/>
             </div>
         </div>
-        <button className="bg-blue-500 cursor-pointer hover:bg-blue-400 text-white px-4 py-2 rounded-md">Filtrar</button>
+        <button onClick={submitFilter} className="bg-blue-500 cursor-pointer hover:bg-blue-400 text-white px-4 py-2 rounded-md">Submit</button>
     </div>
   </div>;
 }

@@ -11,16 +11,27 @@ export class VideogamesRepositoryImpl implements VideogamesRepositoryI {
 
     async getVideogamesList(filter: VideogamesFilter): Promise<PaginatedResponse> {
         let model = await this.videogameDatasource.getVideogamesList(filter);
-        console.log(model.results[0].platforms);
         let entity: PaginatedResponse = {
             ...model,
             results: model.results.map((videogameExt)=>{
+                let platforms:{
+                    id: number;
+                    name: string;
+                }[]= [];
+                if (videogameExt.platforms){
+                    platforms = videogameExt.platforms.map((platform) => {
+                        return {
+                            id:platform.platform.id,
+                            name: platform.platform.name
+                        }
+                    });
+                }
                 let videogame: VideogameSummaryI = {
                     id: videogameExt.id,
                     name: videogameExt.name,
                     metacritic: videogameExt.metacritic,
                     year: getDateFromString(videogameExt.released)?.getFullYear() || null,
-                    plataform: videogameExt.platforms.map((platform) => platform.plataform.name),
+                    platforms,
                     released: getDateFromString(videogameExt.released),
                     background_image: videogameExt.background_image,
                 }
@@ -37,7 +48,12 @@ export class VideogamesRepositoryImpl implements VideogamesRepositoryI {
             id: model.id,
             metacritic: model.metacritic,
             name: model.name,
-            plataform: model.platforms.map((platform) => platform.plataform.name),
+            platforms: model.platforms.map((platform) => {
+                return {
+                    id:platform.platform.id,
+                    name: platform.platform.name
+                }
+            }),
             released: getDateFromString(model.released),
             year: getDateFromString(model.released)?.getFullYear() || null,
         };

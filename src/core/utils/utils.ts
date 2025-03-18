@@ -15,3 +15,7 @@ export function getMetacriticColor(score: number): string {
     if (score < 85) return "bg-orange-500 text-white";
     return "bg-green-500 text-white";
 }
+
+export function getFormattedNumber(number:number):string{
+    return number.toLocaleString("es-ES");
+}

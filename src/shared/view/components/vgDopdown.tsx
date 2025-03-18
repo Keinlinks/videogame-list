@@ -1,9 +1,15 @@
 import { useState } from "react";
 
-export default function VgDropdown({options, width}: {options: string[], width?: number}) {
+interface props{
+  options: string[], 
+  width?: number,
+  keyString:string,
+  onchange?:(key:string,value:string)=>void
+}
+
+export default function VgDropdown({options, width,onchange,keyString}: props) {
     let [isOpen, setIsOpen] = useState(false);
     let [selected, setSelected] = useState(options[0]);
-
 
     let openStyle = {
         maxHeight: '215px',
@@ -11,6 +17,7 @@ export default function VgDropdown({options, width}: {options: string[], width?:
         borderBottom: '1px solid #dddad6'
       }
     function selectedItem(option: string) {
+      if(onchange != undefined) onchange(keyString,option);
         setSelected(option);
         setIsOpen(false);
       }

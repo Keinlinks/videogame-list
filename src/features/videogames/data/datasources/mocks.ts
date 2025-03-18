@@ -38,7 +38,7 @@ export const videogameMock:VideogameDetailsModel ={
     },
     platforms: [
         {
-            plataform: {
+            platform: {
                 id: 1,
                 name: "Nintendo Switch",
                 slug: "nintendo-switch",
@@ -119,7 +119,7 @@ export const  videogameListMock:PaginatedResponseModel =  {
             },
             platforms: [
                 {
-                    plataform: { id: 1, name: "Nintendo Switch", slug: "nintendo-switch" },
+                    platform: { id: 1, name: "Nintendo Switch", slug: "nintendo-switch" },
                     released_at: '',
                     requirements: {
                         minimum: '',
@@ -165,7 +165,7 @@ export const  videogameListMock:PaginatedResponseModel =  {
             },
             platforms: [
                 {
-                    plataform: { id: 1, name: "Nintendo Switch", slug: "nintendo-switch" },
+                    platform: { id: 1, name: "Nintendo Switch", slug: "nintendo-switch" },
                     released_at: '',
                     requirements: {
                         minimum: '',
@@ -211,7 +211,7 @@ export const  videogameListMock:PaginatedResponseModel =  {
             },
             platforms: [
                 {
-                    plataform: { id: 1, name: "Nintendo Switch", slug: "nintendo-switch" },
+                    platform: { id: 1, name: "Nintendo Switch", slug: "nintendo-switch" },
                     released_at: '',
                     requirements: {
                         minimum: '',
@@ -257,7 +257,7 @@ export const  videogameListMock:PaginatedResponseModel =  {
             },
             platforms: [
                 {
-                    plataform: { id: 1, name: "Nintendo Switch", slug: "nintendo-switch" },
+                    platform: { id: 1, name: "Nintendo Switch", slug: "nintendo-switch" },
                     released_at: '',
                     requirements: {
                         minimum: '',
@@ -303,7 +303,7 @@ export const  videogameListMock:PaginatedResponseModel =  {
             },
             platforms: [
                 {
-                    plataform: { id: 1, name: "Nintendo Switch", slug: "nintendo-switch" },
+                    platform: { id: 1, name: "Nintendo Switch", slug: "nintendo-switch" },
                     released_at: '',
                     requirements: {
                         minimum: '',

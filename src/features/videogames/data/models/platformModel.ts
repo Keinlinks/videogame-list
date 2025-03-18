@@ -1,5 +1,5 @@
-export interface PlataformModel {
-    plataform: {
+export interface PlatformModel {
+    platform: {
         id:number;
         slug:string,
         name:string,
