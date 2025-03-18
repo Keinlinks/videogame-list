@@ -3,7 +3,6 @@ import { VideogameDetailsI } from "@/features/videogames/domain/entities/videoga
 
 
 export function VideogameDetails({videogame}:{videogame:VideogameDetailsI}) {
-  console.log(videogame);
   return <section className="h-full flex flex-col">
             <div className="w-full h-[calc(100vh-150px)]">
               <div className="flex justify-center h-[500px]">
@@ -11,9 +10,9 @@ export function VideogameDetails({videogame}:{videogame:VideogameDetailsI}) {
                   <div className="rounded-b-xl w-full h-full  bg-cover bg-fixed bg-center bg-no-repeat blur-[2px]" style={{backgroundImage:`url(${videogame.background_image})`}}>
                   </div>
                   <div className="absolute rounded-b-xl h-full flex flex-col items-center justify-between top-0 left-0 w-full transition-all" style={{backgroundImage: `linear-gradient(360deg, #000000, transparent)`}}>
+                      <div className="bg-[rgba(0,0,0,0.5)] p-4 rounded-xl">
                       <div>
-                      <div>
-                        <h2 className="text-center text-3xl font-bold mb-5 antialiased">Platforms</h2>
+                        <h2 className="text-center text-3xl font-bold mb-5 mt-1 antialiased">Platforms</h2>
                           {videogame.platforms.map((platform,index)=>{
                               return <div key={index} className="flex items-center justify-center my-2">
                                   <p>{platform.name}</p>
@@ -38,10 +37,6 @@ export function VideogameDetails({videogame}:{videogame:VideogameDetailsI}) {
                 <h2 className="text-center text-3xl font-bold mb-5">Description</h2>
                 <p className="text-center" dangerouslySetInnerHTML={{ __html: videogame.description }}></p>
               </div>
-              </div>
-              <div className="mt-10 w-1/2 mx-auto">
-                <h2 className="text-center text-3xl font-bold mb-5">Trailers</h2>
-                          
               </div>
             </div>
             

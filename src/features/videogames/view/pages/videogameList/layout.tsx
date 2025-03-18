@@ -37,7 +37,25 @@ export default function VideogameLayout() {
         filters.sort = sort;
         applyFilters();
     }
+    const resetFilters = ()=>{
+        filters = {
+            page: 1,
+            page_size: 20,
+            search: "",
+            ordering: "metacritic",
+            sort: "desc",
+            creators: [],
+            developers: [],
+            dates: [],
+            genres: [],
+            platforms: [],
+            publishers: [],
+            tags: [],
+            metacritic: [],
+          };
+    }
     useEffect(() => {
+        resetFilters();
         applyFilters();
     }, []);
 

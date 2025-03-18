@@ -40,7 +40,7 @@ export default function VgDropdown({options, width,onchange,keyString,label,clea
             </div>
             <ul className="overflow-y-auto max-h-[150px] absolute top-12 w-full z-50" style={isOpen ? openStyle : {}}>
               {options.map((option, index) => (
-                <li className="bg-black cursor-pointer" key={index}>
+                <li className="bg-background cursor-pointer" key={index}>
                   <a onClick={()=>{selectedItem(options[index])}} >{label ? option[label] :option}</a>
                 </li>
               ))}
