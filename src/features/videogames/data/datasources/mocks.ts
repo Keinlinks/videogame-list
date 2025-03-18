@@ -1,5 +1,5 @@
 import { PaginatedResponseModel } from "../models/paginatedResponseModel";
-import { VideogameDetailsModel } from "../models/videogameModel";
+import { VideogameDetailsModel, VideogameSummaryModel } from "../models/videogameModel";
 
 export const videogameMock:VideogameDetailsModel ={
     id: 1,
@@ -52,7 +52,7 @@ export const videogameMock:VideogameDetailsModel ={
     ],
 };
 
-export const  videogameListMock:PaginatedResponseModel =  {
+export const  videogameListMock:PaginatedResponseModel<VideogameSummaryModel> =  {
     count: 10,
     next: null,
     previous: null,

@@ -4,9 +4,10 @@ import { VideogamesList } from "./videogamesList";
 import { getVideogamesListUseCase } from "../../domain/useCases/getVideogameList";
 import { PaginatedResponse } from "../../domain/entities/paginatedResponse";
 import { VideogameContext, filtersInitialState } from "../state/stateManager";
+import { VideogameSummaryI } from "../../domain/entities/videogame";
 
 export default function VideogameLayout() {
-    const [videogamesPaginated, setVideogamesPaginated] = useState<PaginatedResponse | null>(null);
+    const [videogamesPaginated, setVideogamesPaginated] = useState<PaginatedResponse<VideogameSummaryI> | null>(null);
     const [listLoading, setListLoading] = useState<boolean>(false);
     let filters = filtersInitialState;
 

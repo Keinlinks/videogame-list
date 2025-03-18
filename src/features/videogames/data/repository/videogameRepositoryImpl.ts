@@ -9,9 +9,9 @@ export class VideogamesRepositoryImpl implements VideogamesRepositoryI {
 
     constructor(private videogameDatasource: VideogameDatasource) {}
 
-    async getVideogamesList(filter: VideogamesFilter): Promise<PaginatedResponse> {
+    async getVideogamesList(filter: VideogamesFilter): Promise<PaginatedResponse<VideogameSummaryI>> {
         let model = await this.videogameDatasource.getVideogamesList(filter);
-        let entity: PaginatedResponse = {
+        let entity: PaginatedResponse<VideogameSummaryI> = {
             ...model,
             results: model.results.map((videogameExt)=>{
                 let platforms:{

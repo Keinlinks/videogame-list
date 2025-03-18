@@ -2,8 +2,9 @@ import { VideogamesFilter } from "@/features/videogames/domain/entities/videogam
 import { PaginatedResponse } from "@/features/videogames/domain/entities/paginatedResponse";
 import { NextApiRequest, NextApiResponse } from "next";
 import { ApiVideogamesRepositoryFactory } from "@/features/videogames/infrastructure/factories/videogamesRepositoryFactory";
+import { VideogameSummaryI } from "@/features/videogames/domain/entities/videogame";
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse<PaginatedResponse>) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse<PaginatedResponse<VideogameSummaryI>>) {
   let queries = req.query as any;
   if (req.method === "GET"){
     let videogamesRepository = ApiVideogamesRepositoryFactory("rawgApi");

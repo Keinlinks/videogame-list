@@ -68,7 +68,7 @@ export function VideogamesList() {
           {videogameList.map((videogame: VideogameSummaryI) => <VideogameCard videogame={videogame} key={videogame.id} />)}
           </div>
           <div className="mt-4">
-          <VgPaginator count={paginatedVideogames?.count || 0} page={page || 1} size_page={page_size || 10} changePage={changePage} />
+          <VgPaginator count={paginatedVideogames?.count || 0} page={page || 1} size_page={page_size || 10} changePage={changePage} leftDisabled={context?.videogamesPaginated?.previous === null} rightDisabled={context?.videogamesPaginated?.next === null} />
           </div>
         </>
       }

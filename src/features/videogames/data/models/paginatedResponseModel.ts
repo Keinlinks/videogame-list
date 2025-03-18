@@ -1,8 +1,6 @@
-import { VideogameSummaryModel } from "./videogameModel";
-
-export interface PaginatedResponseModel {
+export interface PaginatedResponseModel<T> {
     count: number;
     next: string | null;
     previous: string | null;
-    results: VideogameSummaryModel[];
+    results: T[];
   }

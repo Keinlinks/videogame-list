@@ -1,10 +1,11 @@
 import React, { createContext } from "react";
 import { VideogamesFilter } from "../../domain/entities/videogamesFilter";
 import { PaginatedResponse } from "../../domain/entities/paginatedResponse";
+import { VideogameSummaryI } from "../../domain/entities/videogame";
 
 export const VideogameContext = createContext<{
-    videogamesPaginated: PaginatedResponse | null;
-    setVideogamesPaginated: React.Dispatch<React.SetStateAction<PaginatedResponse | null>>;
+    videogamesPaginated: PaginatedResponse<VideogameSummaryI> | null;
+    setVideogamesPaginated: React.Dispatch<React.SetStateAction<PaginatedResponse<VideogameSummaryI> | null>>;
     filters: VideogamesFilter;
     listLoading: boolean;
     applyFilters: () => void;
@@ -29,7 +30,3 @@ export const filtersInitialState:VideogamesFilter = {
     tags: [],
     metacritic: [],
   }
-
-export function setFilters(filters:VideogamesFilter,setterFilters:React.Dispatch<React.SetStateAction<VideogamesFilter>>){
-
-}
