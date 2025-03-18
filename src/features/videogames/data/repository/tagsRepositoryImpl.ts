@@ -7,8 +7,8 @@ import { TagsDatasource } from "../datasources/tagsDatasource";
 
 export class TagsRepositoryImpl implements TagsRepositoryI {
     constructor(private tagsDatasource: TagsDatasource) {}
-    getTags(): Promise<PaginatedResponse<TagI>> {
-        return this.tagsDatasource.getTagsList();
+    async getTags(): Promise<PaginatedResponse<TagI>> {
+        return await this.tagsDatasource.getTagsList();
     }
 
 }

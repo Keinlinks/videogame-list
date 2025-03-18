@@ -6,7 +6,7 @@ import { GenresDatasource } from "../datasources/genresDatasource";
 export class GenresRepositoryImpl implements GenresRepositoryI {
     constructor(private genresDatasource: GenresDatasource) {}
     async getGenres(): Promise<PaginatedResponse<GenreI>> {
-        return this.genresDatasource.getGenresList();
+        return await this.genresDatasource.getGenresList();
     }
 
 }

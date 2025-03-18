@@ -5,7 +5,6 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<PaginatedResponse<GenreI>>) {
-  let queries = req.query as any;
   if (req.method === "GET"){
     let genresRepository = ApiGenresRepositoryFactory("rawgApi");
     let response = await genresRepository.getGenres();
