@@ -6,8 +6,8 @@ import { DevelopersDatasource } from "../datasources/developersDatasource";
 export class DevelopersRepositoryImpl implements DevelopersRepositoryI {
     constructor(private genresDatasource: DevelopersDatasource) {}
     async getDevelopers(): Promise<PaginatedResponse<DeveloperI>> {
-        let model:any = await this.genresDatasource.getDevolpersList();
-        let developerI:PaginatedResponse<DeveloperI> = {
+        const model:any = await this.genresDatasource.getDevolpersList();
+        const developerI:PaginatedResponse<DeveloperI> = {
             count: model.count,
             next: model.next,
             previous: model.previous,

@@ -10,8 +10,8 @@ export class VideogamesRepositoryImpl implements VideogamesRepositoryI {
     constructor(private videogameDatasource: VideogameDatasource) {}
 
     async getVideogamesList(filter: VideogamesFilter): Promise<PaginatedResponse<VideogameSummaryI>> {
-        let model = await this.videogameDatasource.getVideogamesList(filter);
-        let entity: PaginatedResponse<VideogameSummaryI> = {
+        const model = await this.videogameDatasource.getVideogamesList(filter);
+        const entity: PaginatedResponse<VideogameSummaryI> = {
             ...model,
             results: model.results.map((videogameExt)=>{
                 let platforms:{
@@ -26,7 +26,7 @@ export class VideogamesRepositoryImpl implements VideogamesRepositoryI {
                         }
                     });
                 }
-                let videogame: VideogameSummaryI = {
+                const videogame: VideogameSummaryI = {
                     id: videogameExt.id,
                     name: videogameExt.name,
                     metacritic: videogameExt.metacritic,
@@ -42,7 +42,7 @@ export class VideogamesRepositoryImpl implements VideogamesRepositoryI {
         return entity;
     }
     async getVideogameById(id: number): Promise<VideogameDetailsI | null> {
-        let model = await this.videogameDatasource.getVideogameById(id);
+        const model = await this.videogameDatasource.getVideogameById(id);
         if (!model) return null;
         return {
             background_image_additional: model.background_image_additional,

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useContext, useRef } from "react";
 import VideogameCard from "../../components/videogameCard";
 import { VideogameSummaryI } from "../../../domain/entities/videogame";
@@ -14,7 +15,7 @@ export function VideogamesList() {
   const inputRef = useRef<HTMLInputElement>(null);
   const listLoading = context?.listLoading;
 
-  let videogameList: VideogameSummaryI[] = paginatedVideogames?.results || [];
+  const videogameList: VideogameSummaryI[] = paginatedVideogames?.results || [];
   
   function changePage(page:number){
     context?.changePage(page);
@@ -28,7 +29,7 @@ export function VideogamesList() {
   function onSubmitSearch(){
     if (!inputRef?.current) return;
     else if (inputRef.current.value === '') return;
-    let search = inputRef.current.value;
+    const search = inputRef.current.value;
     context?.searchQuery(encodeURIComponent(search));
   }
   return (

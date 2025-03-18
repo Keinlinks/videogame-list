@@ -8,7 +8,7 @@ import { PlatformsDatasource } from "../datasources/platformsDatasource";
 export class PlataformsRepositoryImpl implements PlatformsRepositoryI {
     constructor(private platformsDatasource: PlatformsDatasource) {}
     async getAllPlatforms(): Promise<PaginatedResponse<PlatformDetailsI>> {
-        let data = await this.platformsDatasource.getPlatforms();
+        const data = await this.platformsDatasource.getPlatforms();
         data.results = data.results.map((item)=>{
             return {...item
             } as PlatformI;

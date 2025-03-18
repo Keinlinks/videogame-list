@@ -10,7 +10,7 @@ const repositoryMap: Record<GenreRepositoryType, GenresDatasource> = {
 };
 
 export function ApiGenresRepositoryFactory(type: GenreRepositoryType) {
-    let apiGenresDatasource = repositoryMap[type] || repositoryMap['rawgApi'];
+    const apiGenresDatasource = repositoryMap[type] || repositoryMap['rawgApi'];
 
     return new GenresRepositoryImpl(apiGenresDatasource);
 }

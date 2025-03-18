@@ -5,11 +5,11 @@ import { ApiVideogamesRepositoryFactory } from "@/features/videogames/infrastruc
 import { VideogameSummaryI } from "@/features/videogames/domain/entities/videogame";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<PaginatedResponse<VideogameSummaryI>>) {
-  let queries = req.query as any;
+  const queries = req.query as any;
   if (req.method === "GET"){
-    let videogamesRepository = ApiVideogamesRepositoryFactory("rawgApi");
-    let filters = queries as VideogamesFilter;
-    let response = await videogamesRepository.getVideogamesList(filters);
+    const videogamesRepository = ApiVideogamesRepositoryFactory("rawgApi");
+    const filters = queries as VideogamesFilter;
+    const response = await videogamesRepository.getVideogamesList(filters);
     return res.status(200).json(response);
   }
 }

@@ -1,4 +1,3 @@
-import { VideogamesFilter } from "@/features/videogames/domain/entities/videogamesFilter";
 
 //la api devuelve la fecha en formato string, esta funcion la convierte en objeto Date
 export function getDateFromString(dateString: string): Date | null {

@@ -11,7 +11,7 @@ interface Props {
 
 export default function VgInputNumber({width,placeholder,onChange,max,min}: Props) {
 
-    let [value, setValue] = useState<string>("");
+    const [value, setValue] = useState<string>("");
 
     function inputChange(event: React.ChangeEvent<HTMLInputElement>) {
         const newValueString = event.target.value.replace(/[^0-9]/g, "");

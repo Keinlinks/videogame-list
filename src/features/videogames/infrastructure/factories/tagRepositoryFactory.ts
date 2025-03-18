@@ -10,7 +10,7 @@ const repositoryMap: Record<TagsRepositoryType, TagsDatasource> = {
 };
 
 export function ApiTagsRepositoryFactory(type: TagsRepositoryType) {
-    let apiTagsDatasource = repositoryMap[type] || repositoryMap['rawgApi'];
+    const apiTagsDatasource = repositoryMap[type] || repositoryMap['rawgApi'];
 
     return new TagsRepositoryImpl(apiTagsDatasource);
 }

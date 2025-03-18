@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
 
 interface props{
@@ -10,10 +11,10 @@ interface props{
 }
 
 export default function VgDropdown({options, width,onchange,keyString,label,clearButton}: props) {
-    let [isOpen, setIsOpen] = useState(false);
-    let [selected, setSelected] = useState(options[0]);
+    const [isOpen, setIsOpen] = useState(false);
+    const [selected, setSelected] = useState(options[0]);
 
-    let openStyle = {
+    const openStyle = {
         maxHeight: '215px',
         transition: 'max-height 0.2s ease-in',
         borderBottom: '1px solid #dddad6'

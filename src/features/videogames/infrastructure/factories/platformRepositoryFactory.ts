@@ -11,7 +11,7 @@ const repositoryMap: Record<PlatformsRepositoryType, PlatformsDatasource> = {
 };
 
 export function ApiPlatformsRepositoryFactory(type: PlatformsRepositoryType) {
-    let apiPlatformsDatasource = repositoryMap[type] || repositoryMap['rawgApi'];
+    const apiPlatformsDatasource = repositoryMap[type] || repositoryMap['rawgApi'];
 
     return new PlataformsRepositoryImpl(apiPlatformsDatasource);
 }

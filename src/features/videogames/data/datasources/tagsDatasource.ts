@@ -9,11 +9,11 @@ export interface TagsDatasource {
 
 export class ApiRawgTagsDatasource implements TagsDatasource {
     async getTagsList(): Promise<PaginatedResponse<TagModel>> {
-        let api_key = API_KEY;
-        let api_url = API_URL;
-        let url = `${api_url}tags?key=${api_key}`;
-        let response = await fetch(url);
-        let json = await response.json();
+        const api_key = API_KEY;
+        const api_url = API_URL;
+        const url = `${api_url}tags?key=${api_key}`;
+        const response = await fetch(url);
+        const json = await response.json();
         return json as PaginatedResponse<TagModel>;
     }
 }

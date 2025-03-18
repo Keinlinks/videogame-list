@@ -10,7 +10,7 @@ const repositoryMap: Record<DevelopersRepositoryType, DevelopersDatasource> = {
 };
 
 export function ApiDevelopersRepositoryFactory(type: DevelopersRepositoryType) {
-    let apiDevelopersDatasource = repositoryMap[type] || repositoryMap['rawgApi'];
+    const apiDevelopersDatasource = repositoryMap[type] || repositoryMap['rawgApi'];
 
     return new DevelopersRepositoryImpl(apiDevelopersDatasource);
 }

@@ -6,8 +6,8 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<PaginatedResponse<TagI>>) {
   if (req.method === "GET"){
-    let tagsRepository = ApiTagsRepositoryFactory("rawgApi");
-    let response = await tagsRepository.getTags();
+    const tagsRepository = ApiTagsRepositoryFactory("rawgApi");
+    const response = await tagsRepository.getTags();
     return res.status(200).json(response);
   }
 }

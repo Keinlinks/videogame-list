@@ -10,7 +10,7 @@ const repositoryMap: Record<VideogameRepositoryType, VideogameDatasource> = {
 };
 
 export function ApiVideogamesRepositoryFactory(type: VideogameRepositoryType) {
-    let apiVideogameDatasource = repositoryMap[type] || repositoryMap['mock'];
+    const apiVideogameDatasource = repositoryMap[type] || repositoryMap['mock'];
 
     return new VideogamesRepositoryImpl(apiVideogameDatasource);
 }

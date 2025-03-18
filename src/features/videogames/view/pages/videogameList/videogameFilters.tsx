@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import VgInputNumber from "@/shared/view/components/vgInputNumber";
 import VgDropdown from "@/shared/view/components/vgDopdown";
 import { useContext, useEffect, useState } from "react";
@@ -13,8 +14,8 @@ import { DeveloperI } from "../../../domain/entities/developer";
 export default function VideogameFilters() {
 
   const context = useContext(VideogameContext);
-  let [minMetacritic, setMinMetacritic] = useState<number | undefined>(undefined);
-  let [maxMetacritic, setMaxMetacritic] = useState<number | undefined>(undefined);
+  const [minMetacritic, setMinMetacritic] = useState<number | undefined>(undefined);
+  const [maxMetacritic, setMaxMetacritic] = useState<number | undefined>(undefined);
 
 
   const onChange = (key:string,value: any)=>{
@@ -37,21 +38,21 @@ export default function VideogameFilters() {
         context.filters.dates = [`${value}-01-01`,`${value}-12-31`];
     }
   }
-  let [GenreOptions, setGenreOptions] = useState<string[]>([]);
-  let [platformsOptions, setPlatformsOptions] = useState<PlatformDetailsI[]>([]);
-  let [developerOptions, setDeveloperOptions] = useState<DeveloperI[]>([]);
-  let [tagsOptions, setTagsOptions] = useState<string[]>([]);
+  const [GenreOptions, setGenreOptions] = useState<string[]>([]);
+  const [platformsOptions, setPlatformsOptions] = useState<PlatformDetailsI[]>([]);
+  const [developerOptions, setDeveloperOptions] = useState<DeveloperI[]>([]);
+  const [tagsOptions, setTagsOptions] = useState<string[]>([]);
 
-  let yearOptions = ["All",...[...Array(70).keys()].map(i => (new Date().getFullYear() + 1 - i).toString())];
+  const yearOptions = ["All",...[...Array(70).keys()].map(i => (new Date().getFullYear() + 1 - i).toString())];
 
   useEffect(()=>{
     if(context){
       getGenresListUseCase().then((response)=>{
-        let genresNames = response.results.map((item)=>item.name);
+        const genresNames = response.results.map((item)=>item.name);
         setGenreOptions(['All',...genresNames]);
       })
       getTagsListUseCase().then((response)=>{
-        let tagsNames = response.results.map((item)=>item.name);
+        const tagsNames = response.results.map((item)=>item.name);
         setTagsOptions(["All",...tagsNames]);
       })
       getPlatformsListUseCase().then((response)=>{
@@ -61,6 +62,7 @@ export default function VideogameFilters() {
         setDeveloperOptions(response.results);
       })
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 
   function submitFilter() {

@@ -4,7 +4,7 @@ import Link from "next/link";
 
 
 export default function VideogameCard(props: {videogame: VideogameSummaryI}) {
-  let imageUrl = props.videogame.background_image || 'image_default.jpg';
+  const imageUrl = props.videogame.background_image || 'image_default.jpg';
   return <>
     <Link href={'/games/' + props.videogame.id}>
     <div title={props.videogame.name} className="rounded-3xl cursor-pointer max-w-[310px] min-w-[250px] w-full bg-white dark:bg-gray-800 p-4 outline-1 hover:scale-[1.02] transition-all">

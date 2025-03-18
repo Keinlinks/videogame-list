@@ -6,8 +6,8 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<PaginatedResponse<GenreI>>) {
   if (req.method === "GET"){
-    let genresRepository = ApiGenresRepositoryFactory("rawgApi");
-    let response = await genresRepository.getGenres();
+    const genresRepository = ApiGenresRepositoryFactory("rawgApi");
+    const response = await genresRepository.getGenres();
     return res.status(200).json(response);
   }
 }

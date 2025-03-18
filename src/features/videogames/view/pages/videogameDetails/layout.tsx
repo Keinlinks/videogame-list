@@ -5,9 +5,9 @@ import VgLoadingScreen from "@/shared/view/components/vgLoadingScreen";
 import { VideogameDetailsI } from "@/features/videogames/domain/entities/videogame";
 
 export default function VideogameDetailsLayout({id}: {id:string}) {
-    let [isLoading,setLoading] = useState<boolean>(true);
+    const [isLoading,setLoading] = useState<boolean>(true);
     let [error, setError] = useState<string | null>(null);
-    let [videoGame, setVideoGame] = useState<VideogameDetailsI | null>(null);
+    const [videoGame, setVideoGame] = useState<VideogameDetailsI | null>(null);
     
     id && Number.isInteger(+id) ? "" : setError("id is required");
 

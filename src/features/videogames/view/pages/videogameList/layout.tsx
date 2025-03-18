@@ -14,7 +14,7 @@ export default function VideogameLayout() {
     const applyFilters = async () => {
         setVideogamesPaginated(null);
         setListLoading(true);
-        let response = await getVideogamesListUseCase(filters);
+        const response = await getVideogamesListUseCase(filters);
         setVideogamesPaginated(response);
         setListLoading(false);
     }
