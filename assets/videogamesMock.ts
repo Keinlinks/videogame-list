@@ -1,5 +1,5 @@
-import { PaginatedResponseModel } from "../models/paginatedResponseModel";
-import { VideogameDetailsModel, VideogameSummaryModel } from "../models/videogameModel";
+import { PaginatedResponseModel } from "@/features/videogames/data/models/paginatedResponseModel";
+import { VideogameDetailsModel, VideogameSummaryModel } from "@/features/videogames/data/models/videogameModel";
 
 export const videogameMock:VideogameDetailsModel ={
     id: 1,

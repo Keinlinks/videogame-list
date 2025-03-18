@@ -6,6 +6,8 @@ import { getGenresListUseCase } from "../../domain/useCases/getGenresList";
 import { getTagsListUseCase } from "../../domain/useCases/getTagsList";
 import { getPlatformsListUseCase } from "../../domain/useCases/getPlatformsList";
 import { PlatformDetailsI } from "../../domain/entities/platformDetail";
+import { getDevelopersListUseCase } from "../../domain/useCases/getDeveloperList";
+import { DeveloperI } from "../../domain/entities/developer";
 
 
 export default function VideogameFilters() {
@@ -26,7 +28,7 @@ export default function VideogameFilters() {
         context.filters.platforms = [value.id];
         break;
       case "developers":
-        context.filters.developers = [value];
+        context.filters.developers = [value.id];
         break;
       case "tags":
         context.filters.tags = [value];
@@ -37,7 +39,7 @@ export default function VideogameFilters() {
   }
   let [GenreOptions, setGenreOptions] = useState<string[]>([]);
   let [platformsOptions, setPlatformsOptions] = useState<PlatformDetailsI[]>([]);
-  let [developerOptions, setDeveloperOptions] = useState<string[]>([]);
+  let [developerOptions, setDeveloperOptions] = useState<DeveloperI[]>([]);
   let [tagsOptions, setTagsOptions] = useState<string[]>([]);
 
   let yearOptions = ["All",...[...Array(70).keys()].map(i => (new Date().getFullYear() + 1 - i).toString())];
@@ -54,6 +56,9 @@ export default function VideogameFilters() {
       })
       getPlatformsListUseCase().then((response)=>{
         setPlatformsOptions(response.results);
+      })
+      getDevelopersListUseCase().then((response)=>{
+        setDeveloperOptions(response.results);
       })
     }
   },[])
@@ -104,7 +109,7 @@ export default function VideogameFilters() {
         </div>
         <div className="flex flex-col gap-2">
             <label>Developer</label>
-            <VgDropdown options={developerOptions} keyString="developers" onchange={onChange} clearButton={clearForm}/>
+            <VgDropdown options={developerOptions} label="name" keyString="developers" onchange={onChange} clearButton={clearForm}/>
         </div>
         <div className="flex flex-col gap-2">
             <label>Tags</label>

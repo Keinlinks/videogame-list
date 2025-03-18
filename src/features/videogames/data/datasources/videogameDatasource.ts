@@ -2,7 +2,7 @@ import { API_KEY, API_URL } from "@/config/config";
 import { VideogamesFilter } from "../../domain/entities/videogamesFilter";
 import { PaginatedResponseModel } from "../models/paginatedResponseModel";
 import { VideogameDetailsModel, VideogameSummaryModel } from "../models/videogameModel";
-import { videogameListMock, videogameMock } from "./mocks";
+import { videogameListMock, videogameMock } from "../../../../../assets/videogamesMock";
 import { pushQueriesSearchUrl } from "../../utils/utils";
 import { GenreModel } from "../models/genreModel";
 
