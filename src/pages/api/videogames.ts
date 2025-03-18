@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { VideogamesFilter } from "@/features/videogames/domain/entities/videogamesFilter";
 import { PaginatedResponse } from "@/features/videogames/domain/entities/paginatedResponse";
 import { NextApiRequest, NextApiResponse } from "next";
