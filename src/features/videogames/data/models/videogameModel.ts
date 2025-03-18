@@ -27,5 +27,26 @@ export interface VideogameSummaryModel {
 }
 
 export interface VideogameDetailsModel extends VideogameSummaryModel {
-    
+  name_original: string;
+  description: string;
+  background_image_additional: string;
+  website: string;
+  reactions: Record<string, any>;
+  screenshots_count: number;
+  movies_count: number;
+  creators_count: number;
+  achievements_count: number;
+  parent_achievements_count: string;
+  reddit_url: string;
+  reddit_name: string;
+  reddit_description: string;
+  reddit_logo: string;
+  reddit_count: number;
+  twitch_count: string;
+  youtube_count: string;
+  alternative_names: string[];
+  metacritic_url: string;
+  parents_count: number;
+  additions_count: number;
+  game_series_count: number;
 }

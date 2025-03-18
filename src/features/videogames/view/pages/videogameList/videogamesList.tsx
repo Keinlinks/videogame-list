@@ -1,10 +1,10 @@
-import { useContext, useRef, useState } from "react";
-import VideogameCard from "../components/videogameCard";
-import { VideogameSummaryI } from "../../domain/entities/videogame";
+import { useContext, useRef } from "react";
+import VideogameCard from "../../components/videogameCard";
+import { VideogameSummaryI } from "../../../domain/entities/videogame";
 import LoadingScreen from "@/shared/view/components/vgLoadingScreen";
 import VgDropdown from "@/shared/view/components/vgDopdown";
-import { VideogameContext } from "../state/stateManager";
-import VgPaginator from "../components/vgPaginator";
+import { VideogameContext } from "../../state/stateManager";
+import VgPaginator from "../../components/vgPaginator";
 
 export function VideogamesList() {
   const context = useContext(VideogameContext);

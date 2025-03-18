@@ -1,4 +1,4 @@
-import VideogameLayout from "@/features/videogames/view/pages/videogameLayout";
+import VideogameLayout from "@/features/videogames/view/pages/videogameList/layout";
 
 
 

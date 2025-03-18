@@ -4,6 +4,6 @@ import { VideogamesFilter } from "../entities/videogamesFilter";
 
 export interface VideogamesRepositoryI {
     getVideogamesList(filter: VideogamesFilter): Promise<PaginatedResponse<VideogameSummaryI>>;
-    getVideogameById(id: number): Promise<VideogameDetailsI>;
+    getVideogameById(id: number): Promise<VideogameDetailsI | null>;
 }
 

@@ -4,5 +4,5 @@ import { VideogameSummaryI } from "../entities/videogame";
 
 export function getVideogamesListUseCase(filter: any): Promise<PaginatedResponse<VideogameSummaryI>> {
     let url = pushQueriesSearchUrl(filter);
-    return fetch('api/videogames?' + url).then(response => response.json());
+    return fetch('/api/videogames?' + url).then(response => response.json());
 }

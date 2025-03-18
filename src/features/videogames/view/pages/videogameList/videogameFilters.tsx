@@ -1,13 +1,13 @@
 import VgInputNumber from "@/shared/view/components/vgInputNumber";
 import VgDropdown from "@/shared/view/components/vgDopdown";
 import { useContext, useEffect, useState } from "react";
-import { VideogameContext } from "../state/stateManager";
-import { getGenresListUseCase } from "../../domain/useCases/getGenresList";
-import { getTagsListUseCase } from "../../domain/useCases/getTagsList";
-import { getPlatformsListUseCase } from "../../domain/useCases/getPlatformsList";
-import { PlatformDetailsI } from "../../domain/entities/platformDetail";
-import { getDevelopersListUseCase } from "../../domain/useCases/getDeveloperList";
-import { DeveloperI } from "../../domain/entities/developer";
+import { VideogameContext } from "../../state/stateManager";
+import { getGenresListUseCase } from "../../../domain/useCases/getGenresList";
+import { getTagsListUseCase } from "../../../domain/useCases/getTagsList";
+import { getPlatformsListUseCase } from "../../../domain/useCases/getPlatformsList";
+import { PlatformDetailsI } from "../../../domain/entities/platformDetail";
+import { getDevelopersListUseCase } from "../../../domain/useCases/getDeveloperList";
+import { DeveloperI } from "../../../domain/entities/developer";
 
 
 export default function VideogameFilters() {

@@ -12,5 +12,10 @@ export interface VideogameSummaryI{
 }
 
 export interface VideogameDetailsI extends VideogameSummaryI{
-    
+    name_original: string,
+    description: string,
+    tba: boolean,
+    background_image_additional: string,
+    website: string,
+    playtime: number,
 }

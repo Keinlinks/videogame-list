@@ -10,7 +10,7 @@ import { GenreModel } from "../models/genreModel";
 
 export interface VideogameDatasource {
     getVideogamesList(filter: VideogamesFilter): Promise<PaginatedResponseModel<VideogameSummaryModel>>;
-    getVideogameById(id: number): Promise<VideogameDetailsModel>;
+    getVideogameById(id: number): Promise<VideogameDetailsModel | null>;
 }
 
 //clase que implementa la obtencion de data desde la Api Rawg
@@ -43,7 +43,7 @@ export class VideogameDatasourceMock implements VideogameDatasource {
             
         });
     }
-    getVideogameById(id: number): Promise<VideogameDetailsModel> {
+    getVideogameById(id: number): Promise<VideogameDetailsModel | null> {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                 let data:VideogameDetailsModel = videogameMock

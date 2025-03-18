@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import VideogameFilters from "./videogameFilters";
 import { VideogamesList } from "./videogamesList";
-import { getVideogamesListUseCase } from "../../domain/useCases/getVideogameList";
-import { PaginatedResponse } from "../../domain/entities/paginatedResponse";
-import { VideogameContext, filtersInitialState } from "../state/stateManager";
-import { VideogameSummaryI } from "../../domain/entities/videogame";
+import { getVideogamesListUseCase } from "../../../domain/useCases/getVideogameList";
+import { PaginatedResponse } from "../../../domain/entities/paginatedResponse";
+import { VideogameContext, filtersInitialState } from "../../state/stateManager";
+import { VideogameSummaryI } from "../../../domain/entities/videogame";
 
 export default function VideogameLayout() {
     const [videogamesPaginated, setVideogamesPaginated] = useState<PaginatedResponse<VideogameSummaryI> | null>(null);

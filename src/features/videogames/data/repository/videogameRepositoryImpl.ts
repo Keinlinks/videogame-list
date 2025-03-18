@@ -41,9 +41,16 @@ export class VideogamesRepositoryImpl implements VideogamesRepositoryI {
 
         return entity;
     }
-    async getVideogameById(id: number): Promise<VideogameDetailsI> {
+    async getVideogameById(id: number): Promise<VideogameDetailsI | null> {
         let model = await this.videogameDatasource.getVideogameById(id);
+        if (!model) return null;
         return {
+            background_image_additional: model.background_image_additional,
+            description: model.description,
+            name_original: model.name_original,
+            playtime: model.playtime,
+            tba: model.tba,
+            website: model.website,
             background_image: model.background_image,
             id: model.id,
             metacritic: model.metacritic,
