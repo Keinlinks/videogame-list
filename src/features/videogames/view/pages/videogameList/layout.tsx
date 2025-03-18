@@ -57,6 +57,7 @@ export default function VideogameLayout() {
     useEffect(() => {
         resetFilters();
         applyFilters();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return <>

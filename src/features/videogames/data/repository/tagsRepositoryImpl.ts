@@ -8,7 +8,15 @@ import { TagsDatasource } from "../datasources/tagsDatasource";
 export class TagsRepositoryImpl implements TagsRepositoryI {
     constructor(private tagsDatasource: TagsDatasource) {}
     async getTags(): Promise<PaginatedResponse<TagI>> {
-        return await this.tagsDatasource.getTagsList();
+        const model = await this.tagsDatasource.getTagsList();
+        const data:PaginatedResponse<TagI> = {
+            ...model,
+            results: model.results.map((item)=>{
+                return {...item
+                } as TagI;
+              })
+        } 
+        return data;
     }
 
 }

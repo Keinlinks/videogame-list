@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { DeveloperI } from "../../domain/entities/developer";
 import { PaginatedResponse } from "../../domain/entities/paginatedResponse";
 import { DevelopersRepositoryI } from "../../domain/repositories/developersRepositoryI";

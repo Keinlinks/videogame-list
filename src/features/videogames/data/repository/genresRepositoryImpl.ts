@@ -6,7 +6,15 @@ import { GenresDatasource } from "../datasources/genresDatasource";
 export class GenresRepositoryImpl implements GenresRepositoryI {
     constructor(private genresDatasource: GenresDatasource) {}
     async getGenres(): Promise<PaginatedResponse<GenreI>> {
-        return await this.genresDatasource.getGenresList();
+        const model = await this.genresDatasource.getGenresList();
+        const data:PaginatedResponse<GenreI> = {
+            ...model,
+            results: model.results.map((item)=>{
+                return {...item
+                } as GenreI;
+              })
+        } 
+        return data;
     }
 
 }

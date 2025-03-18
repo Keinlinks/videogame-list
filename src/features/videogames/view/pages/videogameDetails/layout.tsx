@@ -1,3 +1,4 @@
+/* eslint-disable prefer-const */
 import { getVideogameByIdUseCase } from "@/features/videogames/domain/useCases/getVideogameById";
 import { useEffect, useState } from "react";
 import { VideogameDetails } from "./videogameDetails";
@@ -8,14 +9,16 @@ export default function VideogameDetailsLayout({id}: {id:string}) {
     const [isLoading,setLoading] = useState<boolean>(true);
     let [error, setError] = useState<string | null>(null);
     const [videoGame, setVideoGame] = useState<VideogameDetailsI | null>(null);
-    
-    id && Number.isInteger(+id) ? "" : setError("id is required");
+    if (!id || !Number.isInteger(+id)){
+        setError("id is required");
+    }
 
     useEffect(()=>{
         if(error)return;
         if (!id) return;
         getVideogameByIdUseCase(+id).then((response)=>{
             if (!response){
+                // eslint-disable-next-line react-hooks/exhaustive-deps
                 error = "Videogame not found";
                 return;
             }

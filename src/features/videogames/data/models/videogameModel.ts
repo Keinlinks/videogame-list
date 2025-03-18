@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { PlatformModel } from "./platformModel";
 
 export interface VideogameSummaryModel {
