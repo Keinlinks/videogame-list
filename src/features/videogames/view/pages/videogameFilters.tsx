@@ -1,7 +1,11 @@
 import VgInputNumber from "@/shared/view/components/vgInputNumber";
 import VgDropdown from "@/shared/view/components/vgDopdown";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { VideogameContext } from "../state/stateManager";
+import { getGenresListUseCase } from "../../domain/useCases/getGenresList";
+import { getTagsListUseCase } from "../../domain/useCases/getTagsList";
+import { getPlatformsListUseCase } from "../../domain/useCases/getPlatformsList";
+import { PlatformDetailsI } from "../../domain/entities/platformDetail";
 
 
 export default function VideogameFilters() {
@@ -11,31 +15,48 @@ export default function VideogameFilters() {
   let [maxMetacritic, setMaxMetacritic] = useState<number | undefined>(undefined);
 
 
-  const onChange = (key:string,value: string)=>{
+  const onChange = (key:string,value: any)=>{
     if (!context) return;
+    if (value === "All" || value === "all") value = "";
     switch(key){
       case "genre":
         context.filters.genres = [value];
         break;
       case "platforms":
-        context.filters.platforms = [value];
+        context.filters.platforms = [value.id];
         break;
       case "developers":
         context.filters.developers = [value];
         break;
-      case "publishers":
-        context.filters.publishers = [value];
+      case "tags":
+        context.filters.tags = [value];
         break;
       case "dates":
         context.filters.dates = [`${value}-01-01`,`${value}-12-31`];
     }
   }
+  let [GenreOptions, setGenreOptions] = useState<string[]>([]);
+  let [platformsOptions, setPlatformsOptions] = useState<PlatformDetailsI[]>([]);
+  let [developerOptions, setDeveloperOptions] = useState<string[]>([]);
+  let [tagsOptions, setTagsOptions] = useState<string[]>([]);
 
-  let GenreOptions = ["All", "Action", "Adventure", "RPG", "Racing", "Shooter", "Simulation", "Sports", "Strategy"];
-  let plataformsOptions = ["All", "PC", "PS4", "PS5", "XBOX", "XBOXONE", "WII", "WIIU", "3DS", "SWITCH", "IOS", "ANDROID", "OTHER"];
-  let developerOptions = ["All", "EA", "NINTENDO", "SEGA", "SNK", "SQUARE ENIX", "UBISOFT", "OTHER"];
-  let publisherOptions = ["All", "NINTENDO", "SEGA", "SQUARE ENIX", "UBISOFT", "OTHER"];
   let yearOptions = ["All",...[...Array(70).keys()].map(i => (new Date().getFullYear() + 1 - i).toString())];
+
+  useEffect(()=>{
+    if(context){
+      getGenresListUseCase().then((response)=>{
+        let genresNames = response.results.map((item)=>item.name);
+        setGenreOptions(['All',...genresNames]);
+      })
+      getTagsListUseCase().then((response)=>{
+        let tagsNames = response.results.map((item)=>item.name);
+        setTagsOptions(["All",...tagsNames]);
+      })
+      getPlatformsListUseCase().then((response)=>{
+        setPlatformsOptions(response.results);
+      })
+    }
+  },[])
 
   function submitFilter() {
     if(!context) return;
@@ -54,29 +75,45 @@ export default function VideogameFilters() {
     context?.applyFilters();
   }
 
+  function clearForm(key:string){
+    if (!context) return;
+    if(key === "genre"){
+      context.filters.genres = [];
+    }
+    else if(key === "platforms"){
+      context.filters.platforms = [];
+    }
+    else if(key === "developers"){
+      context.filters.developers = [];
+    }
+    else if(key === "tags"){
+      context.filters.tags = [];
+    }
+  }
+
   return <div>
     <h3 className="text-center font-bold text-xl mt-2">Filters</h3>
     <div className="px-4 flex flex-col gap-5">
         <div className="flex flex-col gap-2">
             <label>Genre</label>
-            <VgDropdown options={GenreOptions} keyString="genre" onchange={onChange}/>
+            <VgDropdown options={GenreOptions} keyString="genre" onchange={onChange} clearButton={clearForm}/>
         </div>
         <div className="flex flex-col gap-2">
             <label>Plataform</label>
-            <VgDropdown options={plataformsOptions} keyString="platforms" onchange={onChange}/>
+            <VgDropdown options={platformsOptions} label="name" keyString="platforms" onchange={onChange} clearButton={clearForm}/>
         </div>
         <div className="flex flex-col gap-2">
             <label>Developer</label>
-            <VgDropdown options={developerOptions} keyString="developers" onchange={onChange}/>
+            <VgDropdown options={developerOptions} keyString="developers" onchange={onChange} clearButton={clearForm}/>
         </div>
         <div className="flex flex-col gap-2">
-            <label>Publisher</label>
-            <VgDropdown options={publisherOptions} keyString="publishers" onchange={onChange}/>
+            <label>Tags</label>
+            <VgDropdown options={tagsOptions} keyString="tags" onchange={onChange} clearButton={clearForm}/>
         </div>
         <div className="flex flex-col gap-2">
             <label>Released year</label>
             <div className="flex items-center w-full">
-            <VgDropdown options={yearOptions} keyString="dates" onchange={onChange}/>
+            <VgDropdown options={yearOptions} keyString="dates" onchange={onChange} clearButton={clearForm}/>
             </div>
         </div>
         <div className="flex flex-col gap-2">
