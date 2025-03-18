@@ -50,6 +50,28 @@ export const videogameMock:VideogameDetailsModel ={
             }
         },
     ],
+    name_original: "",
+    description: "",
+    background_image_additional: "",
+    website: "",
+    reactions: {},
+    screenshots_count: 0,
+    movies_count: 0,
+    creators_count: 0,
+    achievements_count: 0,
+    parent_achievements_count: "",
+    reddit_url: "",
+    reddit_name: "",
+    reddit_description: "",
+    reddit_logo: "",
+    reddit_count: 0,
+    twitch_count: "",
+    youtube_count: "",
+    alternative_names: [],
+    metacritic_url: "",
+    parents_count: 0,
+    additions_count: 0,
+    game_series_count: 0
 };
 
 export const  videogameListMock:PaginatedResponseModel<VideogameSummaryModel> =  {
