@@ -1,5 +1,5 @@
 import { VideogameDetailsI } from "@/features/videogames/domain/entities/videogame";
-import { ApiVideogamesRepositoryFactory } from "@/features/videogames/infrastructure/factories/videogamesRepositoryFactory";
+import { ApiVideogamesRepositoryFactory } from "@/features/videogames/factories/videogamesRepositoryFactory";
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<VideogameDetailsI | {message:string}>) {

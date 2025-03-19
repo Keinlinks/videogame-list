@@ -1,6 +1,6 @@
 import { DeveloperI } from "@/features/videogames/domain/entities/developer";
 import { PaginatedResponse } from "@/features/videogames/domain/entities/paginatedResponse";
-import { ApiDevelopersRepositoryFactory } from "@/features/videogames/infrastructure/factories/developersRepositoryFactory";
+import { ApiDevelopersRepositoryFactory } from "@/features/videogames/factories/developersRepositoryFactory";
 import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<PaginatedResponse<DeveloperI>>) {

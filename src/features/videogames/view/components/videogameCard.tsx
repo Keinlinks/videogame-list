@@ -13,7 +13,7 @@ export default function VideogameCard(props: {videogame: VideogameSummaryI}) {
         <span className={"absolute bottom-1 outline-1 h-8 w-8 right-2 border border-black text-center rounded-full p-1 " + getMetacriticColor(props.videogame.metacritic) }>{props.videogame.metacritic}</span>
       </div>
     </div>
-    <div>
+    <div className="flex flex-col justify-center items-center h-[96px]">
       <h2 className="text-2xl font-bold text-center">{props.videogame.name}</h2>
     </div>
     <div></div>

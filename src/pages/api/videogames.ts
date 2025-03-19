@@ -2,7 +2,7 @@
 import { VideogamesFilter } from "@/features/videogames/domain/entities/videogamesFilter";
 import { PaginatedResponse } from "@/features/videogames/domain/entities/paginatedResponse";
 import { NextApiRequest, NextApiResponse } from "next";
-import { ApiVideogamesRepositoryFactory } from "@/features/videogames/infrastructure/factories/videogamesRepositoryFactory";
+import { ApiVideogamesRepositoryFactory } from "@/features/videogames/factories/videogamesRepositoryFactory";
 import { VideogameSummaryI } from "@/features/videogames/domain/entities/videogame";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<PaginatedResponse<VideogameSummaryI>>) {

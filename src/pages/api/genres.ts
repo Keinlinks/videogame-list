@@ -1,6 +1,6 @@
 import { GenreI } from "@/features/videogames/domain/entities/genres";
 import { PaginatedResponse } from "@/features/videogames/domain/entities/paginatedResponse";
-import { ApiGenresRepositoryFactory } from "@/features/videogames/infrastructure/factories/genreRepositoryFactory";
+import { ApiGenresRepositoryFactory } from "@/features/videogames/factories/genreRepositoryFactory";
 import { NextApiRequest, NextApiResponse } from "next";
 
 

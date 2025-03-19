@@ -1,5 +1,5 @@
-import { ApiRawgDevelopersDatasource, DevelopersDatasource } from "../../data/datasources/developersDatasource";
-import { DevelopersRepositoryImpl } from "../../data/repository/developersRepositoryImpl";
+import { ApiRawgDevelopersDatasource, DevelopersDatasource } from "../data/datasources/developersDatasource";
+import { DevelopersRepositoryImpl } from "../data/repository/developersRepositoryImpl";
 
 
 //los tipos de fuentes de datos que se pueden utilizar, para implementar uno nuevo se debe agregar aqui y en repositoryMap

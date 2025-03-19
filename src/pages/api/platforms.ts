@@ -1,6 +1,6 @@
 import { PaginatedResponse } from "@/features/videogames/domain/entities/paginatedResponse";
 import { PlatformI } from "@/features/videogames/domain/entities/platformI";
-import { ApiPlatformsRepositoryFactory } from "@/features/videogames/infrastructure/factories/platformRepositoryFactory";
+import { ApiPlatformsRepositoryFactory } from "@/features/videogames/factories/platformRepositoryFactory";
 import { NextApiRequest, NextApiResponse } from "next";
 
 

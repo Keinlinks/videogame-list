@@ -1,5 +1,5 @@
-import { ApiRawgGenresDatasource, GenresDatasource } from "../../data/datasources/genresDatasource";
-import { GenresRepositoryImpl } from "../../data/repository/genresRepositoryImpl";
+import { ApiRawgGenresDatasource, GenresDatasource } from "../data/datasources/genresDatasource";
+import { GenresRepositoryImpl } from "../data/repository/genresRepositoryImpl";
 
 
 //los tipos de fuentes de datos que se pueden utilizar, para implementar uno nuevo se debe agregar aqui y en repositoryMap

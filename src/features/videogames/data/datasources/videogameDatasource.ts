@@ -1,4 +1,3 @@
-import { API_KEY, API_URL } from "@/config/config";
 import { VideogamesFilter } from "../../domain/entities/videogamesFilter";
 import { PaginatedResponseModel } from "../models/paginatedResponseModel";
 import { VideogameDetailsModel, VideogameSummaryModel } from "../models/videogameModel";
@@ -15,16 +14,16 @@ export interface VideogameDatasource {
 //clase que implementa la obtencion de data desde la Api Rawg
 export class RawgApiVideogameDatasource implements VideogameDatasource {
     async getVideogamesList(filter: VideogamesFilter): Promise<PaginatedResponseModel<VideogameSummaryModel>> {
-        const api_key = API_KEY;
-        const api_url = API_URL;
+        const api_key = process.env.API_KEY;
+        const api_url = process.env.API_URL;
         const url = `${api_url}games?key=${api_key}&${pushQueriesSearchUrl(filter)}`;
         const response = await fetch(url);
         const json = await response.json();
         return json as PaginatedResponseModel<VideogameSummaryModel>;
     }
     async getVideogameById(id: number): Promise<VideogameDetailsModel> {
-        const api_key = API_KEY;
-        const api_url = API_URL;
+        const api_key = process.env.API_KEY;
+        const api_url = process.env.API_URL;
         const url = `${api_url}games/${id}?key=${api_key}`;
         const response = await fetch(url);
         const json = await response.json();

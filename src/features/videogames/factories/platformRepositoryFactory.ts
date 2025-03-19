@@ -1,5 +1,5 @@
-import { ApiRawgPlatformsDatasource, PlatformsDatasource } from "../../data/datasources/platformsDatasource";
-import { PlataformsRepositoryImpl } from "../../data/repository/platformsRepositoryImpl";
+import { ApiRawgPlatformsDatasource, PlatformsDatasource } from "../data/datasources/platformsDatasource";
+import { PlataformsRepositoryImpl } from "../data/repository/platformsRepositoryImpl";
 
 
 
