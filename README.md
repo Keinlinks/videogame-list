@@ -28,10 +28,7 @@ Como se puede observar cada carpeta tiene un proposito especifico los cuales se 
 
 ```bash
 git clone https://github.com/Keinlinks/videogame-list.git
-```
 cd videogame-list
-```
 npm install
-```
 npm run dev
 ```
