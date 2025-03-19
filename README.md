@@ -42,3 +42,9 @@ cd videogame-list
 npm install
 npm run dev
 ```
+
+2. Agregar variables de entorno:
+
+Crear archivo .env con las varialbes: 
+API_KEY = ""
+API_URL = https://api.rawg.io/api/
